@@ -23,15 +23,15 @@ python train_node2vec.py --graph ../data/co-author-matrix.npz --walk ../work/ran
 ```
 
 #Important Notes
-Current implementation hard code several parameters:
+Current implementation hard code several parameters:  
 The number of dimension d = 200  
-The number of epochs = 1
+The number of epochs = 1  
 The number of walk per node r = 1  
 Random walk length l = 100  
 Context size k = 16  
 You should modify these parameters as well as p an q. In particular, r should be increased if you want to use for real application. However, my implementation is not efficient so it takes hours with the example network (74,530 nodes), so I restrict r = 1.   
   
-The experimental settings in the original paper are: d = 128, epochs = 1, r = 10, l = 80, and k=10.   
+The experimental settings in the original paper are: d=128, epochs=1, r=10, l=80, and k=10.   
 
 ## Download random walks and embeddings
 I made a sample random walks, and learned embeddings available because it takes time to make them:. You can download them as below:
@@ -40,7 +40,7 @@ I made a sample random walks, and learned embeddings available because it takes 
  Put random_walks.npz into ./work and node_embeddings.npz into ./results
  
 ## Vector Examples
-The embeddings are learned with p = 1.0, q=0.5, d = 200, epochs = 1, r = 1, l = 100, and k = 16. 
+The embeddings are learned with p=1.0, q=0.5, d=200, epochs=1, r=1, l=100, and k=16. 
 
 Top 3 cosine similar authors to Jure Leskovec:  
 1. kevin j lang  
@@ -57,5 +57,5 @@ See examples codes on ipython notebook: https://github.com/apple2373/node2vec/bl
 ##To do list
 1. Make the code more flexible using command line arguments (e.g. dimensions of embeddings)
 2. Use multi-processing for computing transition probabilities and random walks. 
-3. Use asynchronous SGD (currently using Adam SGD with single process).
+3. Use asynchronous SGD (currently using Adam SGD with single process).  
 PR welcome especially for 2 and 3.  
