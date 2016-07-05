@@ -23,6 +23,7 @@ adj_mat_csr_sparse=ad_hoc_functions.load_sparse_csr(file_csr_matrix)
 print("loading pre-computed random walks")
 random_walk_files=args.walks
 np_random_walks=np.load(random_walk_files)['arr_0']
+np.random.shuffle(np_random_walks)
 
 print("defining compuotational graphs")
 #Computational Graph Definition
@@ -107,12 +108,6 @@ with tf.Session() as sess:
     save_path = saver.save(sess, model_path,global_step)
     print("Model saved in file: %s" % save_path)
 
-print("Save embeddings as numpy array")
-with tf.Session() as sess:
-    # Restore variables from disk.
-    global_step=i
-    model_path=log_dir+"model.ckpt-%d"%global_step
-    saver.restore(sess, model_path)
-    print("Model restored.")
+    print("Save final embeddings as numpy array")
     np_node_embeddings=sess.run(node_embeddings)
     np.savez(args.save,np_node_embeddings)
