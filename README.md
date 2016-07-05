@@ -36,7 +36,7 @@ The experimental settings in the original paper are: d = 128, epochs = 1, r = 10
 ## Download random walks and embeddings
 I made a sample random walks, and learned embeddings available because it takes time to make them:. You can download them as below:
  - https://googledrive.com/host/0B046sNk0DhCDZ3pla3BKdnllcEE/random_walks.npz
- - https://googledrive.com/host/0B046sNk0DhCDZ3pla3BKdnllcEE/node_embeddings.npz
+ - https://googledrive.com/host/0B046sNk0DhCDZ3pla3BKdnllcEE/node_embeddings.npz  
  Put random_walks.npz into ./work and node_embeddings.npz into ./results
  
 ## Vector Examples
