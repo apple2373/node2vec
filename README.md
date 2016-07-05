@@ -7,7 +7,7 @@ Also, I noticed that the first author of the paper open sourced the implementati
 I guess that is more efficent. So please try to use that first. This repo is for people who want to use tensorflow for some reasons. 
   
 ## Requirements
-I recoomend you to install [Anaconda](https://www.continuum.io/downloads) and then tensorflow.
+I recommend you to install [Anaconda](https://www.continuum.io/downloads) and then tensorflow.
 - [tneosorflow 0.9](http://tensorflow.org)
 - and some other libraries...
 
