@@ -25,7 +25,7 @@ cd code #make sure you are in code directory
 python train_node2vec.py --graph ../data/co-author-matrix.npz --walk ../work/random_walks.npz --log ./log1/ --save ../results/node_embeddings.npz
 ```
 
-#Important Notes
+##Important Notes
 Current implementation hard code several parameters:  
 The number of dimension d = 200  
 The number of epochs = 1  
