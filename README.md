@@ -14,7 +14,7 @@ I constructed a co-author network from [Microsoft academic graph](https://www.mi
 First, prepare sample nodes by random walk parameterized with p (return parameter) and q (in-out parameter). The input network has to be scipy.sparse.csr_matrix represented as serialized as noted [here](http://stackoverflow.com/questions/8955448/save-load-scipy-sparse-csr-matrix-in-portable-data-format) 
 ```
 cd code #make sure you are in code directory
-python pre_cumpute_walks.py --graph ../data/co-author-matrix.npz --walk ../work/random_walks.npz --p 1.0 --q 0.5
+python pre_compute_walks.py --graph ../data/co-author-matrix.npz --walk ../work/random_walks.npz --p 1.0 --q 0.5
 ```
 Then, learn embeddings using the random walks
 ```
