@@ -52,7 +52,7 @@ Top 3 cosine similar authors to Ying Ding:
 3. sungkook han  
 
 *Note that Ying does not publish so many papers on conferences, but I only use top conferences. So the results might not be intuitive. 
-See more examples on ipython notebook: 
+See examples codes on ipython notebook: https://github.com/apple2373/node2vec/blob/master/code/embedding_explore.ipynb
 
 ##To do list
 1. Make the code more flexible using command line arguments (e.g. dimensions of embeddings)
