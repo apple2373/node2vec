@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
+__author__ = "satoshi tsutsui"
+
 import numpy as np
 from scipy.sparse import csr_matrix
 import multiprocessing as mp

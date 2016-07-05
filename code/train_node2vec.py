@@ -1,17 +1,28 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
+__author__ = "satoshi tsutsui"
+
 import numpy as np
 import tensorflow as tf
 import ad_hoc_functions
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--graph', type=str, default="../data/co-author-matrix.npz",help=u"numpy serialized scipy.sparse.csr_matrix. See http://stackoverflow.com/questions/8955448/save-load-scipy-sparse-csr-matrix-in-portable-data-format")
+parser.add_argument('--walks', type=str, default='../work/random_walks.npz' ,help=u"numpy serialized random walks. Use codes/pre_cumpute_walks.py to generate this file")
+parser.add_argument('--log', type=str, default="../log1/", help=u"directory to save tensorflow logs")
+parser.add_argument('--save', type=str, default='../results/node_embeddings.npz', help=u"directory to save final embeddigs")
+args = parser.parse_args()
 
 print("loading adjacent matrix")
 
-file_csr_matrix="../data/co-author-matrix.npz"
+file_csr_matrix=args.graph
 adj_mat_csr_sparse=ad_hoc_functions.load_sparse_csr(file_csr_matrix)
 
 print("loading pre-computed random walks")
-np_random_walks=np.load('../work/random_walks.npz')['arr_0']
+random_walk_files=args.walks
+np_random_walks=np.load(random_walk_files)['arr_0']
 
 print("defining compuotational graphs")
 #Computational Graph Definition
@@ -71,7 +82,7 @@ init = tf.initialize_all_variables()
 
 print("Optimizing")
 with tf.Session() as sess:
-    log_dir="../log1/"# tensorboard --logdir=./log1
+    log_dir=args.log# tensorboard --logdir=./log1
     writer = tf.train.SummaryWriter(log_dir, sess.graph)
     sess.run(init)
     for i in xrange(0,num_random_walks):
@@ -104,4 +115,4 @@ with tf.Session() as sess:
     saver.restore(sess, model_path)
     print("Model restored.")
     np_node_embeddings=sess.run(node_embeddings)
-    np.savez('../results/node_embeddings.npz',np_node_embeddings)
+    np.savez(args.save,np_node_embeddings)
