@@ -42,11 +42,11 @@ I made a sample random walks, and learned embeddings available because it takes 
 ## Vector Examples
 The embeddings are learned with p = 1.0, q=0.5, d = 200, epochs = 1, r = 1, l = 100, and k = 16. 
 
-Top 3 cosine similar authors to Jure Leskovec:
+Top 3 cosine similar authors to Jure Leskovec:  
 1. kevin j lang  
 2. julian mcauley  
 3. nigam h shah  
-Top 3 cosine similar authors to Ying Ding:
+Top 3 cosine similar authors to Ying Ding:  
 1. yuyin sun  
 2. zhanpeng fang  
 3. sungkook han  
