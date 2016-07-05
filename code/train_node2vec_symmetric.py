@@ -7,7 +7,6 @@ import numpy as np
 import tensorflow as tf
 import ad_hoc_functions
 import argparse
-import math
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--graph', type=str, default="../data/co-author-matrix.npz",help=u"numpy serialized scipy.sparse.csr_matrix. See http://stackoverflow.com/questions/8955448/save-load-scipy-sparse-csr-matrix-in-portable-data-format")
@@ -38,8 +37,9 @@ global_step = tf.Variable(0, name='global_step', trainable=False)
 
 # Parameters to learn
 node_embeddings = tf.Variable(tf.random_uniform([num_nodes, embedding_size], -1.0, 1.0))
-softmax_weights = tf.Variable(tf.truncated_normal([num_nodes, embedding_size],stddev=1.0 / math.sqrt(embedding_size)))
-softmax_biases = tf.Variable(tf.zeros([num_nodes]))
+
+#Fixedones
+biases=tf.zeros([num_nodes])
 
 # Input data and re-orgenize size.
 with tf.name_scope("context_node") as scope:
@@ -60,7 +60,7 @@ with tf.name_scope("loss") as scope:
     # Look up embeddings for words.
     node_embed = tf.nn.embedding_lookup(node_embeddings, train_input_node_flat)
     # Compute the softmax loss, using a sample of the negative labels each time.
-    loss_node2vec = tf.reduce_mean(tf.nn.sampled_softmax_loss(softmax_weights,softmax_biases,node_embed,train_context_node_flat, num_sampled, num_nodes))
+    loss_node2vec = tf.reduce_mean(tf.nn.sampled_softmax_loss(node_embeddings,biases,node_embed,train_context_node_flat, num_sampled, num_nodes))
     loss_node2vec_summary = tf.scalar_summary("loss_node2vec", loss_node2vec)
 
 # Initializing the variables
