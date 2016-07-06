@@ -1,7 +1,7 @@
 # Node2vec with tensorflow
 This repo contains ad hoc implementation of node2vec using tensorflow. I call it ad hoc because the codes are not so clean and efficient. However, it is applicable for large networks. I tested on a network with 74,530 nodes. Also, the input network needs to be represented as a Scipy.sparse.csr_matrix. 
   
-main reference appeared at KDD 2016: [node2vec: Scalable Feature Learning for Networks](http://aditya-grover.github.io/files/publications/kdd16.pdf)
+main reference appeared at KDD 2016: [node2vec: Scalable Feature Learning for Networks](http://arxiv.org/abs/1607.00653)
   
 Also, I noticed that the first author of the paper open sourced the implementation: https://github.com/aditya-grover/node2vec
 I guess that is more efficent. So please try to use that first. This repo is for people who want to use tensorflow for some reasons. 
